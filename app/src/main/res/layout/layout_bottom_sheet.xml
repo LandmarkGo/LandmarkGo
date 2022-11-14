@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="13dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="110dp"
+            app:cardCornerRadius="10dp"
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+            >
+            <ImageView
+                android:id="@+id/Picture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@drawable/rounded_corners_image" />
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="vertical"
+            android:layout_marginStart="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|clip_vertical">
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_weight=".90"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/NameOfPlace1"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="5dp"/>
+                <ImageButton
+                    android:id="@+id/ic_favorite"
+                    android:layout_width="33dp"
+                    android:scaleType="centerInside"
+                    android:layout_weight=".1"
+                    android:layout_height="31dp"
+                    android:layout_gravity="end"
+                    android:background="@drawable/favorite"
+                    android:clickable="true" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/PhoneOfPlace"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Rating"
+                android:numStars="5"
+                android:progressTint="@color/purple_200"
+                android:rating="0"
+                android:isIndicator="true"
+                android:stepSize="0.5"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:tooltipText=""/>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorDivider"/>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="5dp">
+        <TextView
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:text="@string/distance"
+            android:id="@+id/DistanceOfPlaceTitle"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/time_of_arrival"
+            android:id="@+id/TimeOfArrivalTitle"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="5dp">
+        <TextView
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/DistanceOfPlace"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/TimeOfArrival"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorDivider"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:padding="10dp"
+        android:focusable="true"
+        android:gravity="center_vertical">
+
+
+        <Button
+            android:id="@+id/buttonDirections"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
+            android:text="@string/directions"
+            android:backgroundTint="#ee2d30"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
