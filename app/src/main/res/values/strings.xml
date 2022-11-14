@@ -27,4 +27,6 @@
     <string name="floating_action_button">Floating action button</string>
     <string name="km">KM</string>
     <string name="measurement">Measurement</string>
+
+    <string name="MAPS_API_KEY">AIzaSyANNxd0f6zOf_VvWwI-B3bY0rOblhUW410</string>
 </resources>

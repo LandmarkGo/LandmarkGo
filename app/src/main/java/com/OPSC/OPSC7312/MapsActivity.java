@@ -96,6 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String distanceString = "";
     private String durationString = "";
     private Bitmap photoBitmap = null;
+    private String API_KEY = getString(R.string.MAPS_API_KEY);
     Autocomplete autocomplete;
     double ratingValue;
     String favID;
@@ -607,7 +608,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         else
         {
-            Routing routing = new Routing.Builder().travelMode(AbstractRouting.TravelMode.DRIVING).withListener(this).alternativeRoutes(true).waypoints(Start, End).key("AIzaSyANNxd0f6zOf_VvWwI-B3bY0rOblhUW410").build();
+            Routing routing = new Routing.Builder().travelMode(AbstractRouting.TravelMode.DRIVING).withListener(this).alternativeRoutes(true).waypoints(Start, End).key(API_KEY).build();
             bottomSheetDialog.dismiss();
             routing.execute();
         }
@@ -686,7 +687,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void SearchBar()
     {
         // Initialize Places.
-        Places.initialize(getApplicationContext(), "AIzaSyANNxd0f6zOf_VvWwI-B3bY0rOblhUW410");
+        Places.initialize(getApplicationContext(), API_KEY);
         // Create a new Places client instance.
         PlacesClient placesClient = Places.createClient(this);
 
@@ -847,7 +848,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String[] startArray = startString.split(",");
         String[] endArray = endString.split(",");
 
-        HttpUrl mySearchUrl = new HttpUrl.Builder().scheme("https").host("maps.googleapis.com").addPathSegment("maps").addPathSegment("api").addPathSegment("distancematrix").addPathSegment("json").addQueryParameter("origins", startArray[0] + "," + startArray[1] + "&destinations=" + endString + "&units=" + Units + "&key=AIzaSyANNxd0f6zOf_VvWwI-B3bY0rOblhUW410").build();
+        HttpUrl mySearchUrl = new HttpUrl.Builder().scheme("https").host("maps.googleapis.com").addPathSegment("maps").addPathSegment("api").addPathSegment("distancematrix").addPathSegment("json").addQueryParameter("origins", startArray[0] + "," + startArray[1] + "&destinations=" + endString + "&units=" + Units + "&key=" + API_KEY).build();
         String afterDecode = URLDecoder.decode(mySearchUrl.toString(), "UTF-8");
 
         Log.d(TAG, "Json: " + mySearchUrl.toString());
