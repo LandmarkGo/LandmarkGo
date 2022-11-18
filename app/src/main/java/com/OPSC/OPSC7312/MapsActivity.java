@@ -96,7 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String distanceString = "";
     private String durationString = "";
     private Bitmap photoBitmap = null;
-    private String API_KEY = getString(R.string.MAPS_API_KEY);
+    private String API_KEY = "";
     Autocomplete autocomplete;
     double ratingValue;
     String favID;
@@ -133,6 +133,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        String API = getString(R.string.MAPS_API_KEY);
+
+        API_KEY = API;
 
         //request location permission.
         requestPermision();
@@ -334,9 +338,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void requestPermision()
     {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST_CODE);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
         }
         else
         {
