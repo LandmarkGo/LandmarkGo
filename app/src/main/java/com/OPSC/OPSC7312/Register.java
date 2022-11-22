@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -15,12 +16,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity {
 
     Button btn2_signup;
     EditText user_name, pass_word;
     FirebaseAuth mAuth;
+    DatabaseReference dbRefSettings;
+    FirebaseUser user;
+    String uid;
+    private FirebaseDatabase rootNode;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -29,6 +40,8 @@ public class Register extends AppCompatActivity {
 
         //Hiding the Action Bar
         getSupportActionBar().hide();
+
+        dbRefSettings = FirebaseDatabase.getInstance().getReference().child("Settings");
 
         user_name = findViewById(R.id.Email);
         pass_word = findViewById(R.id.password1);
@@ -67,6 +80,12 @@ public class Register extends AppCompatActivity {
                     pass_word.requestFocus();
                     return;
                 }
+                user = FirebaseAuth.getInstance().getCurrentUser();
+                uid = user.getUid();
+
+                dbRefSettings = FirebaseDatabase.getInstance().getReference().child("Settings");
+                rootNode = FirebaseDatabase.getInstance();
+
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
                 {
                     @Override
@@ -74,6 +93,11 @@ public class Register extends AppCompatActivity {
                     {
                         if (task.isSuccessful())
                         {
+                            SettingsClass cc = new SettingsClass(mAuth.getUid(), "metric", "KFC");
+                            dbRefSettings.child(cc.getUid() + "").setValue(cc);
+
+
+
                             Toast.makeText(Register.this, "You are successfully Registered", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Register.this, Login.class);
                             startActivity(intent);
@@ -84,6 +108,7 @@ public class Register extends AppCompatActivity {
                         }
                     }
                 });
+
 
             }
         });

@@ -60,7 +60,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Email"
             android:textColor="@color/white"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
 
@@ -95,7 +95,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password1"
             android:textColor="@color/white"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>

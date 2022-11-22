@@ -44,8 +44,6 @@ public class Favorites extends AppCompatActivity
         dbRef = FirebaseDatabase.getInstance().getReference().child("Favorite");
         rootNode = FirebaseDatabase.getInstance();
 
-
-
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
 
@@ -95,7 +93,6 @@ public class Favorites extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-
                 Intent intent = new Intent(Favorites.this, MapsActivity.class);
 
                 intent.putExtra("Lat", listLat.get(position));
